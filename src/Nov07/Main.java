@@ -11,6 +11,7 @@ public class Main {
 //        System.out.println(browny.age);
         System.out.println(browny.color);
         browny.bark();
+        browny.bark("Jay Vince");
         browny.makeSound();
         browny.eat();
         System.out.println(browny);

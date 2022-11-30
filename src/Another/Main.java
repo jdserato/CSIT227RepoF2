@@ -1,28 +1,42 @@
 package Another;
-import Main.Human;
-import Nov07.Animal;
-import Nov07.Swimmer;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Integer> numbers = new ArrayList<>();
-        // Wrapper Classes
-        numbers.add(5);
-        numbers.add(90);
-        numbers.add(13);
-        numbers.add(69);
-        numbers.add(0);
+        boolean finished = false;
+        do {
+            try {
+                Scanner sc = new Scanner(System.in);
+                System.out.print("Enter a: ");
+                String a_str = sc.nextLine();
+                int a = Integer.parseInt(a_str);
+                System.out.print("Enter b: ");
+                int b = sc.nextInt();
+                ensurePositive(a);
+                ensurePositive(b);
+                int answer = a / b;
+                System.out.println("Answer: " + answer);
+                finished = true;
+                throw new JayVinceException();
+            } catch (ArithmeticException e) {
+                System.out.println("Cannot divide by zero");
+            } catch (IllegalArgumentException e) {
+                System.err.println(e.getMessage());
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("An error has occurred");
 
-        for (Integer i : numbers) {
-            System.out.print(i + " ");
-        }
-        System.out.println();
-        Collections.sort(numbers);
-        for (Integer i : numbers) {
-            System.out.print(i + " ");
+            }
+        }while (false);
+        System.out.println("PROCESS DONE");
+    }
+
+    static void ensurePositive(int n) {
+        ensurePositive(n);
+        if (n < 0) {
+            throw new IllegalArgumentException(n + " is not positive");
         }
     }
 }

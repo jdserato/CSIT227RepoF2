@@ -10,8 +10,13 @@ public class Dog extends Animal {
         this.color = color;
     }
 
+    // METHOD OVERLOADING
     public void bark() {
         System.out.println(name + " says Arf Arf");
+    }
+
+    public void bark(String person) {
+        System.out.println(name + " says Arf Arf to the " + person);
     }
 
     @Override
